@@ -14,14 +14,13 @@ from urlparse import urlparse
 print(socket.getservbyname(urlparse('http://www.163.com').scheme))
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_addr = ('127.0.0.1', 21)
+server_addr = ('127.0.0.1', 10001)
 sock.connect(server_addr)
 
-print(sock.recv(100))
+while True:
+   data = raw_input('Input:')
+   print(">> %s" % data)
+   sock.send(data)
 
 sock.close()
 
-
-sock = socket.create_connection(('127.0.0.1', 21))
-print(sock.recv(100))
-sock.close()
